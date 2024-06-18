@@ -19,13 +19,6 @@ sheet_names = excel_data.sheet_names
 # Load the data from the specific sheet
 df = pd.read_excel(file_path, sheet_name='Respostas ao formulário 1')
 
-# Display the first few rows of the dataframe to understand its structure
-print(df.head())
-
-# imprimindo os tipos de dados do dataframe
-print(df.dtypes)
-
-
 # Assuming df is your DataFrame and 'Hora e Minutos' is the column with time strings
 # Convert 'Hora e Minutos' from string to datetime format
 df['Hora e Minutos'] = pd.to_datetime(df['Carimbo de data/hora'], format='%H:%M')
@@ -82,11 +75,9 @@ st.pyplot(fig)
 
 # Separando os trabalhos por GRUPO
 df_group = df.groupby('GRUPO')['GRUPO'].count()
-print(df_group)
 
 # Ordenando os grupos por número de avaliações
 df_group = df_group.sort_values(ascending=False)
-print(df_group)
 
 # Plotando um gráfico de barras com os 10 grupos com mais avaliações
 df_group.head(10).plot(kind='bar', color='blue')
@@ -101,11 +92,9 @@ st.pyplot(fig)
 # Calculando a média de avaliações por grupo para a questão Q1
 st.write('Q1 - Em um grau de 1 a 5: o quão impactante para a sociedade tal projeto seria? (1 - Nada impactante, 5 - Muito impactante)')
 df_mean_q1 = df.groupby('GRUPO')['Q1'].mean()
-print(df_mean_q1)
 
 # Ordenando os grupos por média de avaliações
 q1_top_10 = df_mean_q1.sort_values(ascending=False)
-print(df_mean_q1)
 
 # Plotando um gráfico de barras com os 10 grupos com maior média de avaliações para a questão Q1
 q1_top_10 = q1_top_10.head(10)
@@ -123,11 +112,9 @@ st.pyplot(fig)
 # Calculando a média de avaliações por grupo para a questão Q2
 st.write('Q2 - Em um grau de 1 a 5, o software apresenta acessibilidade? (1 - Não apresenta acessibilidade, 5 - Apresenta total acessibilidade)')
 df_mean_q2 = df.groupby('GRUPO')['Q2'].mean()
-print(df_mean_q2)
 
 # Ordenando os grupos por média de avaliações
 q2_top_10 = df_mean_q2.sort_values(ascending=False).head(10)
-print(q2_top_10)
 
 # Plotando um gráfico de barras com os 10 grupos com maior média de avaliações para a questão Q2
 fig, ax = plt.subplots()
@@ -143,11 +130,9 @@ st.pyplot(fig)
 # Calculando a média de avaliações por grupo para a questão Q3
 st.write('Q3 - Em um grau de 1 a 5: nível de clareza do problema abordado pelo projeto (1 - Pouco claro, 5 - Muito claro)')
 df_mean_q3 = df.groupby('GRUPO')['Q3'].mean()
-print(df_mean_q3)
 
 # Ordenando os grupos por média de avaliações
 q3_top_10 = df_mean_q3.sort_values(ascending=False).head(10)
-print(q3_top_10)
 
 # Plotando um gráfico de barras com os 10 grupos com maior média de avaliações para a questão Q3
 fig, ax = plt.subplots()
@@ -163,11 +148,9 @@ st.pyplot(fig)
 # Calculando a média de avaliações por grupo para a questão Q4
 st.write('Q4 - Em um grau de 1 a 5. O projeto expõe o problema a ser resolvido pelo projeto? (1 - Não expõe o problema, 5 - Expõe claramente o problema)')
 df_mean_q4 = df.groupby('GRUPO')['Q4'].mean()
-print(df_mean_q4)
 
 # Ordenando os grupos por média de avaliações
 q4_top_10 = df_mean_q4.sort_values(ascending=False).head(10)
-print(q4_top_10)
 
 # Plotando um gráfico de barras com os 10 grupos com maior média de avaliações para a questão Q4
 fig, ax = plt.subplots()
@@ -183,11 +166,9 @@ st.pyplot(fig)
 # Calculando a média de avaliações por grupo para a questão Q5
 st.write('Q5 - Em um grau de 1 a 5. Qual a qualidade das telas apresentadas no projeto? (1 - Baixa qualidade, 5 - Alta qualidade)')
 df_mean_q5 = df.groupby('GRUPO')['Q5'].mean()
-print(df_mean_q5)
 
 # Ordenando os grupos por média de avaliações
 q5_top_10 = df_mean_q5.sort_values(ascending=False).head(10)
-print(q5_top_10)
 
 # Plotando um gráfico de barras com os 10 grupos com maior média de avaliações para a questão Q5
 fig, ax = plt.subplots()
@@ -203,11 +184,9 @@ st.pyplot(fig)
 # Calculando a média de avaliações por grupo para a questão Q6
 st.write('Q6 - Em um grau de 1 a 5, qual a qualidade do material exposto (apresentação) do projeto? (1 - Baixa qualidade, 5 - Alta qualidade)')
 df_mean_q6 = df.groupby('GRUPO')['Q6'].mean()
-print(df_mean_q6)
 
 # Ordenando os grupos por média de avaliações
 q6_top_10 = df_mean_q6.sort_values(ascending=False).head(10)
-print(q6_top_10)
 
 # Plotando um gráfico de barras com os 10 grupos com maior média de avaliações para a questão Q6
 fig, ax = plt.subplots()
@@ -223,11 +202,9 @@ st.pyplot(fig)
 # Calculando a média de avaliações por grupo para a questão Q7
 st.write('Q7- Em um grau de 1 a 5. Qual o conhecimento apresentado do grupo sobre o projeto? (1 - Baixo conhecimento, 5 - Alto conhecimento)')
 df_mean_q7 = df.groupby('GRUPO')['Q7'].mean()
-print(df_mean_q7)
 
 # Ordenando os grupos por média de avaliações
 q7_top_10 = df_mean_q7.sort_values(ascending=False).head(10)
-print(q7_top_10)
 
 # Plotando um gráfico de barras com os 10 grupos com maior média de avaliações para a questão Q7
 fig, ax = plt.subplots()

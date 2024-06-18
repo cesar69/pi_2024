@@ -218,7 +218,7 @@ plt.tight_layout()
 st.pyplot(fig)
 
 st.subheader('Análise Personalizada por Grupo')
-st.write('Escolha a seguir um grupo específico para visualizar as médias do trabalho para cada uma das questões (Q1 - Q7).')
+st.write('Escolha a seguir um trabalho de um grupo específico para visualizar as médias das notas para cada uma das questões (Q1 - Q7).')
 
 # Selecionando um grupo específico
 # Eliminando valores nulos

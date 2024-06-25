@@ -4,11 +4,6 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 import streamlit as st
 
-#
-# Foram realizadas exclusões de avaliações dos trabalhos realizados a partir das 
-#
-#
-
 # Load the Excel file
 file_path = 'PI_2024_REV1.xlsx'
 excel_data = pd.ExcelFile(file_path)
@@ -44,7 +39,15 @@ bins = np.linspace(min_minutes, max_minutes, 11)  # 10 bins means 11 edges
 #     # Carregando logo nucleo TI da Uniso
 #     st.image('nucleo_ti_logo.jpg', width=100)
 
-st.image(['uniso_logo_3.png', 'nucleo_ti_logo.jpg'])
+
+st.image('uniso_view.jpg', use_column_width=True)
+
+# Cria três colunas
+left_space, center_column, right_space = st.columns([1,2,1])  # Ajuste as proporções conforme necessário
+
+# Para cada imagem, carrega na coluna central
+with center_column:
+    st.image('nucleo_ti_logo_1.jpg', use_column_width=True)
 
 # Título da página utilizando o streamlit
 st.title('Análise Trabalhos Projeto Integrador - Cursos de TI')

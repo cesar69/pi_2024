@@ -43,7 +43,7 @@ bins = np.linspace(min_minutes, max_minutes, 11)  # 10 bins means 11 edges
 st.image('uniso_view.jpg', use_column_width=True)
 
 # Cria três colunas
-left_space, center_column, right_space = st.columns([1,2,1])  # Ajuste as proporções conforme necessário
+left_space, center_column, right_space = st.columns([2,1,2])  # Ajuste as proporções conforme necessário
 
 # Para cada imagem, carrega na coluna central
 with center_column:

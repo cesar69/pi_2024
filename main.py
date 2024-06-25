@@ -1,6 +1,8 @@
+from turtle import left
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 import streamlit as st
 
 #
@@ -31,13 +33,19 @@ min_minutes = df['Minutes'].min()
 max_minutes = df['Minutes'].max()
 bins = np.linspace(min_minutes, max_minutes, 11)  # 10 bins means 11 edges
 
-left_co, cent_co,last_co = st.columns(3)
-with cent_co:
-    # Carregando logo da UNISO
-    st.image('uniso_logo.png', width=400)
-    # Carregando logo grup TI da Uniso
-    st.image('logo_ti_uniso.png', width=100)
+# left_co, cent_co,last_co = st.columns(3)
+# with left_co:
+#     # Carregando logo da UNISO
+#     st.image('uniso_logo_2.png', width=400)
 
+# with cent_co:
+#     st.write(' ')
+
+# with last_co:
+#     # Carregando logo nucleo TI da Uniso
+#     st.image('nucleo_ti_logo.jpg', width=100)
+
+st.image(['uniso_logo_3.png', 'nucleo_ti_logo.jpg'])
 
 # Título da página utilizando o streamlit
 st.title('Análise Trabalhos Projeto Integrador - Cursos de TI')
@@ -218,7 +226,7 @@ plt.tight_layout()
 st.pyplot(fig)
 
 st.subheader('Análise Personalizada por Grupo')
-st.write('Escolha a seguir um trabalho de um grupo específico para visualizar as médias das notas para cada uma das questões (Q1 - Q7).')
+st.write('Escolha a seguir um trabalho de um grupo específico para visualizar as médias das notas para cada uma das questões (Q1 - Q7) bem como os horários das avaliações.')
 
 # Selecionando um grupo específico
 # Eliminando valores nulos
@@ -228,6 +236,9 @@ grupo_selecionado = st.selectbox('Selecione um grupo:', df['GRUPO'].unique())
 
 # Filtrando o dataframe para o grupo selecionado
 df_grupo = df[df['GRUPO'] == grupo_selecionado]
+
+# # Visualizando o dataframe do grupo selecionado
+# st.write(df_grupo)
 
 # Calculando a média de avaliações para cada questão
 media_q1 = df_grupo['Q1'].mean()
@@ -257,5 +268,22 @@ ax = plt.bar(['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7'], [media_q1, media_q2, me
 plt.xlabel('Questão')
 plt.ylabel('Média de Avaliações')
 plt.title(f'Médias de Avaliações para o Grupo {grupo_selecionado}')
+plt.tight_layout()
+st.pyplot(fig)
+
+# Exibindo um gráfico com o horário das avaliações para o grupo selecionado
+fig, ax = plt.subplots()
+
+# Forcando os yticks a serem inteiros
+ax.yaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Plotando histograma com 10 bins
+ax = plt.hist(df_grupo['Minutes'], bins=bins, edgecolor='black')
+
+# Set xticks and labels
+plt.xticks(ticks=xticks, labels=xtick_labels, rotation=45)
+plt.xlabel('Hora')
+plt.ylabel('QTD de Avaliações')
+plt.title(f'Distribuição das Avaliações por Horário - Grupo {grupo_selecionado}')
 plt.tight_layout()
 st.pyplot(fig)
